@@ -1,0 +1,9 @@
+[project]
+name = "arabic-support-assistant"
+version = "0.1.0"
+description = "Customer-support assistant for a Saudi travel agency: answers from policy in Saudi dialect, formal Arabic or English, and hands over to a person when it can't prove the answer"
+requires-python = ">=3.10"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
