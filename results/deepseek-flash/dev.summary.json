@@ -26,7 +26,7 @@
   },
   "cost_usd": 0.00924,
   "cost_per_1000_usd": 0.118,
-  "median_seconds": 1.4223592281341553,
+  "median_seconds": 1.422,
   "model": "deepseek-flash",
   "set": "dev"
 }

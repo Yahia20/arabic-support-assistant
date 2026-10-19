@@ -1,7 +1,7 @@
 """Find the policy sections a question is about.
 
 Every policy line is embedded on its own, in both languages, with a multilingual
-sentence-transformers model that runs locally. A section scores as well as its best-matching
+sentence-transformers model. A section scores as well as its best-matching
 line, so a short question like "تقبلون مدى؟" lands on the one line that mentions mada instead of
 being averaged away by the rest of the section. A small word-overlap score breaks ties between
 sections that share vocabulary.

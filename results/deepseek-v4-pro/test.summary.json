@@ -1,0 +1,32 @@
+{
+  "questions": 245,
+  "right_action_and_content": 240,
+  "answer_precision": 0.976,
+  "answers_sent": 167,
+  "wrong_answers_sent": 4,
+  "handoff_recall": 0.9559,
+  "handoff_cases": 68,
+  "automation": 0.9879,
+  "answerable": 165,
+  "redirect_accuracy": 1.0,
+  "overruled_by_check": 1,
+  "by_language": {
+    "ar-msa": {
+      "n": 40,
+      "right": 38
+    },
+    "ar-sa": {
+      "n": 126,
+      "right": 124
+    },
+    "en": {
+      "n": 79,
+      "right": 78
+    }
+  },
+  "cost_usd": 0.22528,
+  "cost_per_1000_usd": 0.92,
+  "median_seconds": 3.366,
+  "model": "deepseek-v4-pro",
+  "set": "test"
+}

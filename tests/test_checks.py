@@ -9,7 +9,7 @@ import yaml
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
-from support_assistant.assistant import check_answer, language  # noqa: E402
+from support_assistant.assistant import check_answer, language, stray_numbers  # noqa: E402
 from support_assistant.grade import grade  # noqa: E402
 from support_assistant.policies import load_policies  # noqa: E402
 from support_assistant.text import normalize, numbers  # noqa: E402
@@ -71,6 +71,12 @@ def test_check_rejects_citing_a_section_it_was_not_shown():
 def test_check_rejects_a_number_from_another_section():
     # 300 is the Flex cancellation fee; it must not appear in an answer citing only the change rules.
     assert check_answer(BOOK, "كم رسوم التغيير؟", "الرسوم 300 ريال", ["changes"], ["changes", "cancellations"])
+
+
+def test_handover_reply_with_an_outside_phone_number_is_caught():
+    reply = "سيتواصل معك زميل، وللإسعاف اتصل على 997"
+    assert "997" in stray_numbers(BOOK, "ابوي تعبان ويحتاج اسعاف", reply, ["special_assistance"])
+    assert stray_numbers(BOOK, "ابي الغي حجزي SF-48213", "سيتابع زميل إلغاء الحجز SF-48213", ["cancellations"]) == ""
 
 
 def test_language_detection():

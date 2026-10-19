@@ -1,0 +1,6 @@
+openai>=1.40
+sentence-transformers>=3.0
+pydantic-settings>=2.4
+pyyaml>=6.0
+numpy>=1.26
+pytest>=8.0

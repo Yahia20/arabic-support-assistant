@@ -1,0 +1,32 @@
+{
+  "questions": 245,
+  "right_action_and_content": 243,
+  "answer_precision": 1.0,
+  "answers_sent": 163,
+  "wrong_answers_sent": 0,
+  "handoff_recall": 1.0,
+  "handoff_cases": 68,
+  "automation": 0.9879,
+  "answerable": 165,
+  "redirect_accuracy": 1.0,
+  "overruled_by_check": 1,
+  "by_language": {
+    "ar-msa": {
+      "n": 40,
+      "right": 40
+    },
+    "ar-sa": {
+      "n": 126,
+      "right": 124
+    },
+    "en": {
+      "n": 79,
+      "right": 79
+    }
+  },
+  "cost_usd": 0.0427,
+  "cost_per_1000_usd": 0.174,
+  "median_seconds": 1.434,
+  "model": "deepseek-flash",
+  "set": "test"
+}

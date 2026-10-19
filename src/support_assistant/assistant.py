@@ -34,12 +34,15 @@ def check_answer(book: PolicyBook, question: str, reply: str, cited: list[str], 
     cited_ok = [s for s in cited if s in shown and book.get(s)]
     if not cited_ok:
         return "cites no section that was shown"
-    source = " ".join(book.get(s).ar + " " + book.get(s).en for s in cited_ok)
+    return stray_numbers(book, question, reply, cited_ok)
+
+
+def stray_numbers(book: PolicyBook, question: str, reply: str, section_ids: list[str]) -> str:
+    """Describe the numbers in `reply` that neither the sections nor the question account for."""
+    source = " ".join(book.get(s).ar + " " + book.get(s).en for s in section_ids if book.get(s))
     allowed = derivable(numbers(source), question_numbers(question))
     stray = sorted(n for n in numbers(reply) if n not in allowed)
-    if stray:
-        return "numbers not in the policy: " + ", ".join(f"{n:g}" for n in stray)
-    return ""
+    return "numbers not in the policy: " + ", ".join(f"{n:g}" for n in stray) if stray else ""
 
 
 @dataclass
@@ -52,6 +55,7 @@ class Result:
     summary_for_agent: str = ""
     model_action: str = ""           # what the model proposed, before the checks
     overruled: str = ""              # why code turned an answer into a handoff, if it did
+    reply_replaced: str = ""         # why code replaced a hand-over/redirect reply's wording, if it did
     retrieved: list[str] = field(default_factory=list)
     calls: int = 0
     cost_usd: float = 0.0
@@ -98,6 +102,12 @@ class Assistant:
                 res.action, res.overruled, res.reason = "handoff", problem, "unverified"
                 res.summary_for_agent = f"Bot answer withheld by the check ({problem}). Customer asked: {question}"
                 res.reply = prompts.HANDOFF_FALLBACK[lang]
+        if res.action != "answer" and res.reply and not res.overruled:
+            # Hand-over and redirect replies get the same number check: a phone number or a fee the
+            # policy doesn't contain is replaced with the standard hand-over text.
+            stray = stray_numbers(self.book, question, res.reply, shown)
+            if stray:
+                res.reply_replaced, res.reply = stray, prompts.HANDOFF_FALLBACK[lang]
         if res.action == "handoff" and not res.reply:
             res.reply = prompts.HANDOFF_FALLBACK[lang]
         return res
