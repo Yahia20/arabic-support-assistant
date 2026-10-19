@@ -1,0 +1,210 @@
+# Customer policies of Saffar Travel — a FICTIONAL travel agency in Riyadh, invented for this
+# project. Every rule, price and time below is made up. Prices are in Saudi riyals (SAR) and
+# include VAT unless a section says otherwise.
+#
+# Each section is written in Arabic and English with the same numbers. The assistant may only
+# answer from these sections; anything else goes to a person.
+
+company:
+  name: { ar: "سفّار للسفر والسياحة", en: "Saffar Travel" }
+
+sections:
+  - id: changes
+    title: { ar: "تغيير موعد الرحلة", en: "Changing a flight date" }
+    ar: |
+      - تذكرة التوفير: رسوم التغيير 250 ريال لكل راكب لكل اتجاه، بالإضافة إلى فرق السعر إن وُجد. لا يُسمح بالتغيير قبل أقل من 24 ساعة من الإقلاع.
+      - تذكرة المرن: التغيير مجاني حتى 24 ساعة قبل الإقلاع، وبعدها رسوم 100 ريال، بالإضافة إلى فرق السعر.
+      - درجة الأعمال: التغيير مجاني في أي وقت قبل الإقلاع، ويُدفع فرق السعر فقط.
+      - التغيير عبر التطبيق أو الموقع مجاني من جهتنا. التغيير عبر مركز الاتصال عليه رسوم خدمة 35 ريال لكل حجز.
+      - تغيير موعد العودة فقط يخضع لنفس القواعد.
+      - لا يمكن تغيير أي تذكرة بعد موعد الإقلاع؛ تُعامل الحالة كعدم حضور (انظر سياسة الإلغاء).
+    en: |
+      - Saver fare: change fee SAR 250 per passenger per direction, plus any fare difference. Changes are not allowed less than 24 hours before departure.
+      - Flex fare: free changes up to 24 hours before departure; after that a SAR 100 fee, plus any fare difference.
+      - Business class: free changes at any time before departure; only the fare difference is paid.
+      - Changes made in the app or on the website cost nothing extra from us. Changes made through the call centre carry a SAR 35 service fee per booking.
+      - Changing only the return date follows the same rules.
+      - No ticket can be changed after departure time; it is treated as a no-show (see cancellations).
+
+  - id: cancellations
+    title: { ar: "الإلغاء واسترداد المبلغ", en: "Cancellations and refunds" }
+    ar: |
+      - الإلغاء المجاني: إذا ألغيت خلال 24 ساعة من الحجز وكانت الرحلة بعد أكثر من 7 أيام، تسترد المبلغ كاملًا لأي نوع تذكرة.
+      - تذكرة التوفير: غير قابلة للاسترداد، وتُسترد ضرائب المطار فقط.
+      - تذكرة المرن: يُسترد المبلغ بعد خصم رسوم إلغاء 300 ريال لكل راكب.
+      - درجة الأعمال: يُسترد المبلغ بعد خصم رسوم إلغاء 150 ريال لكل راكب.
+      - عدم الحضور للرحلة: تُسترد ضرائب المطار فقط، لكل أنواع التذاكر.
+      - يعود المبلغ إلى وسيلة الدفع الأصلية خلال 7 إلى 14 يوم عمل. التحويل البنكي يعود خلال 10 أيام عمل إلى نفس رقم الآيبان.
+    en: |
+      - Free cancellation: cancel within 24 hours of booking, with the flight more than 7 days away, and you get a full refund on any fare.
+      - Saver fare: non-refundable; only airport taxes are refunded.
+      - Flex fare: refunded minus a SAR 300 cancellation fee per passenger.
+      - Business class: refunded minus a SAR 150 cancellation fee per passenger.
+      - No-show: only airport taxes are refunded, on every fare.
+      - Refunds go back to the original payment method within 7 to 14 working days. Bank transfers are returned within 10 working days to the same IBAN.
+
+  - id: baggage
+    title: { ar: "الأمتعة", en: "Baggage" }
+    ar: |
+      - حقيبة المقصورة: 7 كجم بحد أقصى ومقاس 55×40×23 سم، بالإضافة إلى قطعة شخصية صغيرة.
+      - تذكرة التوفير: بدون حقيبة مسجلة. يمكن إضافة حقيبة 23 كجم بسعر 120 ريال عبر الموقع أو 180 ريال في المطار.
+      - تذكرة المرن: 1 حقيبة مسجلة بوزن 23 كجم.
+      - درجة الأعمال: 2 حقيبة مسجلة بوزن 32 كجم لكل حقيبة.
+      - الوزن الزائد بين 23 و32 كجم: 150 ريال لكل حقيبة. الحقائب فوق 32 كجم لا تُقبل وتُشحن كشحن جوي.
+      - ماء زمزم: عبوة واحدة 5 لتر لكل راكب على الرحلات من جدة والمدينة، مجانًا ولا تُحسب من الوزن المسموح.
+      - الحقيبة المفقودة أو التالفة: قدّم بلاغًا في مكتب الأمتعة بالمطار خلال 7 أيام، ونحن نساعدك في رفع المطالبة لشركة الطيران، والتعويض تقرره شركة الطيران.
+    en: |
+      - Cabin bag: up to 7 kg and 55×40×23 cm, plus one small personal item.
+      - Saver fare: no checked bag. A 23 kg bag can be added for SAR 120 online or SAR 180 at the airport.
+      - Flex fare: 1 checked bag of 23 kg.
+      - Business class: 2 checked bags of 32 kg each.
+      - Overweight between 23 and 32 kg: SAR 150 per bag. Bags over 32 kg are not accepted and must go as air cargo.
+      - Zamzam water: one 5-litre container per passenger on flights from Jeddah and Madinah, free and not counted in the allowance.
+      - Lost or damaged bag: report it at the airport baggage desk within 7 days; we help you file the claim with the airline, and the airline decides any compensation.
+
+  - id: visas
+    title: { ar: "التأشيرات", en: "Visas" }
+    ar: |
+      - نصدر التأشيرة السياحية السعودية الإلكترونية للجنسيات المؤهلة. رسوم خدمتنا 75 ريال بالإضافة إلى الرسوم الحكومية التي تظهر عند الدفع، وتصدر عادة خلال 1 إلى 3 أيام عمل.
+      - يجب أن يكون جواز السفر صالحًا 6 أشهر على الأقل من تاريخ الوصول.
+      - لا نضمن الموافقة على التأشيرة. إذا رُفضت تُرد رسوم خدمتنا 75 ريال، ولا تُرد الرسوم الحكومية.
+      - تأشيرات الدول الأخرى (شنغن، بريطانيا، أمريكا): نقدم خدمة حجز الموعد وتجهيز الملف برسوم 200 ريال، وقرار القبول للسفارة وحدها.
+      - تصاريح العمرة تُصدر عبر تطبيق نسك، ونساعدك في الحجز ضمن باقات العمرة.
+    en: |
+      - We issue the Saudi tourist e-visa for eligible nationalities. Our service fee is SAR 75 plus the government fee shown at checkout; it is usually issued within 1 to 3 working days.
+      - The passport must be valid for at least 6 months from the arrival date.
+      - We do not guarantee approval. If the visa is refused, our SAR 75 service fee is refunded; the government fee is not.
+      - Visas for other countries (Schengen, UK, USA): we book the appointment and prepare the file for SAR 200; the decision belongs to the embassy alone.
+      - Umrah permits are issued through the Nusuk app, and we help you book them as part of our Umrah packages.
+
+  - id: umrah_packages
+    title: { ar: "باقات العمرة", en: "Umrah packages" }
+    ar: |
+      - الباقات: الاقتصادية والقياسية والمميزة. كلها تشمل الفندق والتنقل بين مكة والمدينة والمساعدة في التأشيرة والتصريح. التنقل بالحافلة في الاقتصادية والقياسية، وبقطار الحرمين في المميزة.
+      - عند الحجز يُدفع عربون 30% من قيمة الباقة، والباقي قبل 15 يومًا من السفر.
+      - الإلغاء قبل أكثر من 30 يومًا من السفر: يُسترد المبلغ بعد خصم 200 ريال. من 15 إلى 30 يومًا: يُسترد 50%. أقل من 15 يومًا: لا يُسترد شيء.
+      - باقات العشر الأواخر من رمضان غير قابلة للاسترداد بعد التأكيد.
+      - الطفل أقل من 2 سنة مجانًا في الباقة بدون سرير، والطفل من 2 إلى 11 سنة بنسبة 60% من سعر البالغ.
+    en: |
+      - Packages: Economy, Standard and Premium. All include the hotel, transport between Makkah and Madinah, and help with the visa and permit. Transport is by bus in Economy and Standard, and by Haramain train in Premium.
+      - A 30% deposit is paid at booking; the rest is due 15 days before travel.
+      - Cancelling more than 30 days before travel: refunded minus SAR 200. From 15 to 30 days: 50% refunded. Less than 15 days: no refund.
+      - Packages for the last ten nights of Ramadan are non-refundable once confirmed.
+      - A child under 2 is free in the package without a bed; a child aged 2 to 11 pays 60% of the adult price.
+
+  - id: hotels
+    title: { ar: "حجوزات الفنادق", en: "Hotel bookings" }
+    ar: |
+      - تسجيل الدخول الساعة 3 عصرًا (15:00) والمغادرة الساعة 12 ظهرًا. الدخول المبكر حسب توفر الغرف.
+      - الأسعار القابلة للاسترداد: إلغاء مجاني حتى 48 ساعة قبل الوصول، وبعدها تُخصم قيمة الليلة الأولى.
+      - الأسعار غير القابلة للاسترداد: لا يُسترد أي مبلغ.
+      - فنادق مكة والمدينة في موسمي رمضان والحج: الإلغاء المجاني حتى 14 يومًا قبل الوصول.
+      - تغيير اسم النزيل مجاني حتى 24 ساعة قبل الوصول.
+    en: |
+      - Check-in is at 3 pm (15:00) and check-out at 12 noon. Early check-in depends on availability.
+      - Refundable rates: free cancellation up to 48 hours before arrival; after that the first night is charged.
+      - Non-refundable rates: nothing is refunded.
+      - Makkah and Madinah hotels in the Ramadan and Hajj seasons: free cancellation up to 14 days before arrival.
+      - Changing the guest name is free up to 24 hours before arrival.
+
+  - id: payment
+    title: { ar: "الدفع والتقسيط", en: "Payment and instalments" }
+    ar: |
+      - طرق الدفع: مدى، فيزا، ماستركارد، Apple Pay، STC Pay، والتحويل البنكي.
+      - التحويل البنكي يجب أن يصل خلال 24 ساعة من الحجز، وإلا يُلغى الحجز تلقائيًا.
+      - التقسيط: تقسيم المبلغ على 4 دفعات بدون فوائد للحجوزات من 500 إلى 10,000 ريال، وتُدفع الدفعة الأولى عند الحجز.
+      - إذا فشل الدفع يبقى الحجز محجوزًا لمدة 30 دقيقة.
+      - كل الأسعار بالريال السعودي. البطاقات بعملة أخرى قد يفرض عليها البنك رسومًا.
+    en: |
+      - Payment methods: mada, Visa, Mastercard, Apple Pay, STC Pay and bank transfer.
+      - A bank transfer must arrive within 24 hours of booking, otherwise the booking is cancelled automatically.
+      - Instalments: split the amount into 4 interest-free payments for bookings from SAR 500 to SAR 10,000; the first payment is made at booking.
+      - If a payment fails, the booking is held for 30 minutes.
+      - All prices are in Saudi riyals. Cards in another currency may be charged a fee by the bank.
+
+  - id: invoices
+    title: { ar: "الفواتير والضريبة", en: "Invoices and VAT" }
+    ar: |
+      - الأسعار شاملة ضريبة القيمة المضافة. تذاكر الطيران الدولية خاضعة لنسبة 0%، والرحلات الداخلية والفنادق داخل المملكة ورسوم الخدمة خاضعة لنسبة 15%.
+      - تصلك الفاتورة الضريبية على بريدك تلقائيًا خلال 24 ساعة من الدفع.
+      - فاتورة باسم شركة ورقمها الضريبي: اطلبها بالبريد خلال 30 يومًا من الحجز.
+      - تصحيح بيانات الفاتورة ممكن خلال 30 يومًا من إصدارها.
+    en: |
+      - Prices include VAT. International flight tickets are zero-rated at 0%; domestic flights, hotels inside the Kingdom and service fees carry 15%.
+      - The tax invoice is emailed automatically within 24 hours of payment.
+      - An invoice in a company's name with its VAT number: request it by email within 30 days of booking.
+      - Invoice details can be corrected within 30 days of issue.
+
+  - id: loyalty
+    title: { ar: "نقاط الولاء", en: "Loyalty points" }
+    ar: |
+      - تكسب 1 نقطة لكل 10 ريال تنفقها على الطيران والفنادق، و2 نقطة لكل 10 ريال على باقات العمرة.
+      - كل 100 نقطة تساوي خصم 10 ريال. أقل عدد للاستبدال 500 نقطة.
+      - تُضاف النقاط بعد 7 أيام من انتهاء الرحلة.
+      - تنتهي صلاحية النقاط بعد 24 شهرًا من تاريخ كسبها.
+      - النقاط شخصية ولا يمكن تحويلها لحساب آخر.
+    en: |
+      - You earn 1 point for every SAR 10 spent on flights and hotels, and 2 points for every SAR 10 on Umrah packages.
+      - Every 100 points equal a SAR 10 discount. The minimum redemption is 500 points.
+      - Points are added 7 days after the trip ends.
+      - Points expire 24 months after they are earned.
+      - Points are personal and cannot be moved to another account.
+
+  - id: children
+    title: { ar: "سفر الأطفال والرضع", en: "Children and infants" }
+    ar: |
+      - الرضيع أقل من 2 سنة: 10% من سعر تذكرة البالغ، بدون مقعد، مع حقيبة 10 كجم وعربة أطفال مجانًا.
+      - الطفل من 2 إلى 11 سنة: 75% من سعر تذكرة البالغ، مع نفس الوزن المسموح للبالغ.
+      - الطفل المسافر وحده من 5 إلى 11 سنة: خدمة مرافقة من شركة الطيران برسوم 300 ريال لكل اتجاه، ويُحجز عبر مركز الاتصال فقط.
+      - كل طفل يحتاج جواز سفر خاص به للرحلات الدولية.
+    en: |
+      - Infant under 2: 10% of the adult fare, no seat, with a 10 kg bag and a free stroller.
+      - Child aged 2 to 11: 75% of the adult fare, with the same allowance as an adult.
+      - Child travelling alone aged 5 to 11: escort service from the airline for SAR 300 per direction, booked through the call centre only.
+      - Every child needs their own passport for international flights.
+
+  - id: special_assistance
+    title: { ar: "المساعدة الخاصة والحالات الصحية", en: "Special assistance and medical" }
+    ar: |
+      - الكرسي المتحرك مجاني، ويُطلب قبل 48 ساعة على الأقل من الإقلاع.
+      - الأجهزة الطبية مثل الأكسجين تحتاج موافقة شركة الطيران ونموذج طبي قبل 72 ساعة من الإقلاع.
+      - الحمل: من الأسبوع 28 يلزم خطاب من الطبيب بتاريخ لا يزيد عن 7 أيام. لا يُسمح بالسفر بعد الأسبوع 36 للحمل الفردي، وبعد الأسبوع 32 لحمل التوائم.
+    en: |
+      - A wheelchair is free and must be requested at least 48 hours before departure.
+      - Medical devices such as oxygen need the airline's approval and a medical form 72 hours before departure.
+      - Pregnancy: from week 28 a doctor's letter dated within 7 days is required. Travel is not allowed after week 36 for a single pregnancy, or after week 32 for twins.
+
+  - id: disruptions
+    title: { ar: "تأخير الرحلات وإلغاؤها من شركة الطيران", en: "Delays and cancellations by the airline" }
+    ar: |
+      - إذا ألغت شركة الطيران رحلتك أو غيّرت موعدها أكثر من 3 ساعات، يحق لك تغيير مجاني أو استرداد كامل.
+      - نرسل لك رسالة نصية فور علمنا بأي تغيير من شركة الطيران.
+      - الرحلات المحجوزة على تذاكر منفصلة: لا نتحمل فوات الرحلة التالية إذا تأخرت الأولى.
+    en: |
+      - If the airline cancels your flight or moves it by more than 3 hours, you are entitled to a free change or a full refund.
+      - We send you a text message as soon as we learn of any change from the airline.
+      - Flights booked on separate tickets: we are not responsible for a missed onward flight if the first one is late.
+
+  - id: name_correction
+    title: { ar: "تصحيح الاسم في التذكرة", en: "Correcting a name on a ticket" }
+    ar: |
+      - تصحيح خطأ إملائي حتى 3 أحرف: مجاني إذا تم قبل 72 ساعة من الإقلاع، وبعدها برسوم 100 ريال.
+      - نقل التذكرة لشخص آخر غير مسموح؛ يجب إلغاء الحجز وحجز جديد.
+      - يجب أن يطابق الاسم في التذكرة الاسم في جواز السفر تمامًا.
+    en: |
+      - Correcting a spelling mistake of up to 3 letters: free if done 72 hours before departure, SAR 100 after that.
+      - Transferring a ticket to another person is not allowed; the booking must be cancelled and a new one made.
+      - The name on the ticket must match the passport exactly.
+
+  - id: contact
+    title: { ar: "التواصل وساعات العمل", en: "Contact and opening hours" }
+    ar: |
+      - مركز الاتصال يعمل يوميًا من 8 صباحًا حتى 12 منتصف الليل بتوقيت الرياض.
+      - واتساب متاح 24 ساعة طوال أيام الأسبوع.
+      - الرد على البريد الإلكتروني خلال 24 ساعة.
+      - فرع الرياض يعمل من الأحد إلى الخميس من 9 صباحًا حتى 9 مساءً.
+    en: |
+      - The call centre is open daily from 8 am to 12 midnight Riyadh time.
+      - WhatsApp is available 24 hours a day, every day.
+      - Emails are answered within 24 hours.
+      - The Riyadh branch is open Sunday to Thursday from 9 am to 9 pm.

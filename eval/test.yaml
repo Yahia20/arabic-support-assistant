@@ -1,0 +1,301 @@
+# FROZEN TEST SET — written before any assistant code existed, and not edited after the first run.
+# Tuning happens on dev.yaml only.
+#
+# lang:     ar-sa (Saudi dialect) · ar-msa (formal Arabic) · en
+# expect:   answer   — the policy answers it; the reply must cite one of `sections` and contain
+#                      every group in `facts` (each group lists acceptable spellings; numbers are
+#                      matched as whole numbers after Arabic digits and thousands separators are
+#                      normalised)
+#           handoff  — must go to a person: complaint, compensation, an action on a specific
+#                      booking or account, something the policy doesn't cover, an emergency,
+#                      a legal threat, a request for an exception, or a request for a human
+#           redirect — not a support question (greeting, thanks, unrelated)
+
+# ---------------------------------------------------------------- changes
+- {id: t001, lang: ar-sa,  q: "ابي اغير موعد رحلتي وتذكرتي توفير، كم الرسوم؟", expect: answer, sections: [changes], facts: [["250"]]}
+- {id: t002, lang: ar-sa,  q: "تذكرتي مرن، اقدر اغير الموعد ببلاش؟", expect: answer, sections: [changes], facts: [["24"]]}
+- {id: t003, lang: ar-sa,  q: "باقي على رحلتي 10 ساعات وتذكرتي توفير، ينفع اغيرها؟", expect: answer, sections: [changes], facts: [["24"]]}
+- {id: t004, lang: ar-sa,  q: "لو غيرت الحجز عن طريق الكول سنتر فيه رسوم زيادة؟", expect: answer, sections: [changes], facts: [["35"]]}
+- {id: t005, lang: ar-sa,  q: "ودي اغير بس تاريخ الرجعة، نفس القوانين؟", expect: answer, sections: [changes], facts: []}
+- {id: t006, lang: ar-msa, q: "ما رسوم تغيير موعد الرحلة لتذكرة المرن إذا كان التغيير قبل الإقلاع بـ 12 ساعة؟", expect: answer, sections: [changes], facts: [["100"]]}
+- {id: t007, lang: ar-msa, q: "هل يمكن تغيير تذكرة درجة الأعمال دون رسوم؟", expect: answer, sections: [changes], facts: [["مجان", "free", "بدون رسوم", "دون رسوم", "ببلاش"]]}
+- {id: t008, lang: en,     q: "I have a Saver ticket. How much does it cost to change my flight date?", expect: answer, sections: [changes], facts: [["250"]]}
+- {id: t009, lang: en,     q: "My flight left yesterday and I missed it. Can I still change my ticket?", expect: answer, sections: [changes, cancellations], facts: []}
+- {id: t010, lang: ar-sa,  q: "اذا غيرت الموعد من التطبيق تاخذون مني رسوم خدمة؟", expect: answer, sections: [changes], facts: []}
+- {id: t011, lang: en,     q: "Is there a fee if I change my Flex ticket 2 days before departure?", expect: answer, sections: [changes], facts: [["free", "no fee", "no charge", "no change fee"]]}
+- {id: t012, lang: ar-sa,  q: "كم رسوم تغيير الموعد لتذكرة توفير لو احنا 3 ركاب؟", expect: answer, sections: [changes], facts: [["250", "750"]]}
+
+# ---------------------------------------------------------------- cancellations
+- {id: t013, lang: ar-sa,  q: "حجزت قبل ساعتين والرحلة بعد شهر، ابي الغي، يرجع لي المبلغ كامل؟", expect: answer, sections: [cancellations], facts: [["كامل", "full"]]}
+- {id: t014, lang: ar-sa,  q: "تذكرتي توفير وابي الغيها، كم يرجع لي؟", expect: answer, sections: [cancellations], facts: [["ضريب", "ضرائب", "tax"]]}
+- {id: t015, lang: ar-sa,  q: "كم رسوم الالغاء على التذكرة المرنة؟", expect: answer, sections: [cancellations], facts: [["300"]]}
+- {id: t016, lang: ar-msa, q: "ما رسوم إلغاء تذكرة درجة الأعمال؟", expect: answer, sections: [cancellations], facts: [["150"]]}
+- {id: t017, lang: ar-sa,  q: "بعد ما الغي، متى يرجع المبلغ لبطاقتي؟", expect: answer, sections: [cancellations], facts: [["7"], ["14"]]}
+- {id: t018, lang: ar-sa,  q: "دفعت بتحويل بنكي، الاسترداد كم ياخذ وقت؟", expect: answer, sections: [cancellations], facts: [["10"]]}
+- {id: t019, lang: en,     q: "I didn't show up for my flight. Do I get anything back?", expect: answer, sections: [cancellations], facts: [["tax"]]}
+- {id: t020, lang: en,     q: "What's the cancellation fee for a Flex ticket?", expect: answer, sections: [cancellations], facts: [["300"]]}
+- {id: t021, lang: en,     q: "I booked 3 hours ago and my trip is in two weeks. Can I cancel for free?", expect: answer, sections: [cancellations], facts: [["full", "free"]]}
+- {id: t022, lang: ar-msa, q: "حجزت قبل 5 ساعات ورحلتي بعد 4 أيام، هل يحق لي الإلغاء المجاني؟", expect: answer, sections: [cancellations], facts: [["7"]]}
+- {id: t023, lang: ar-sa,  q: "لو الغيت تذكرة المرن لي ولزوجتي كم يخصمون؟", expect: answer, sections: [cancellations], facts: [["300", "600"]]}
+- {id: t024, lang: ar-sa,  q: "المبلغ يرجع لنفس البطاقة اللي دفعت فيها ولا كيف؟", expect: answer, sections: [cancellations], facts: [["نفس", "الاصلي", "original"]]}
+
+# ---------------------------------------------------------------- baggage
+- {id: t025, lang: ar-sa,  q: "كم وزن الشنطة اللي اقدر اخذها معي داخل الطيارة؟", expect: answer, sections: [baggage], facts: [["7"]]}
+- {id: t026, lang: ar-sa,  q: "تذكرتي توفير، فيها شنطة مسجلة؟", expect: answer, sections: [baggage], facts: []}
+- {id: t027, lang: ar-sa,  q: "كم سعر اضافة شنطة 23 كيلو لو دفعت في المطار؟", expect: answer, sections: [baggage], facts: [["180"]]}
+- {id: t028, lang: ar-sa,  q: "شنطتي وزنها 28 كيلو، كم ادفع زيادة؟", expect: answer, sections: [baggage], facts: [["150"]]}
+- {id: t029, lang: ar-sa,  q: "عندي شنطة 35 كيلو، يقبلونها؟", expect: answer, sections: [baggage], facts: [["شحن", "cargo"]]}
+- {id: t030, lang: ar-sa,  q: "ينفع اخذ زمزم معي من جدة؟", expect: answer, sections: [baggage], facts: [["5"]]}
+- {id: t031, lang: ar-msa, q: "كم عدد الحقائب المسجلة المسموح بها في درجة الأعمال؟", expect: answer, sections: [baggage], facts: [["2"], ["32"]]}
+- {id: t032, lang: ar-msa, q: "ما أبعاد حقيبة المقصورة المسموح بها؟", expect: answer, sections: [baggage], facts: [["55"]]}
+- {id: t033, lang: en,     q: "How much is an extra 23 kg bag if I add it online on a Saver ticket?", expect: answer, sections: [baggage], facts: [["120"]]}
+- {id: t034, lang: en,     q: "My bag arrived damaged. What should I do?", expect: answer, sections: [baggage], facts: [["7"]]}
+- {id: t035, lang: en,     q: "Does a Flex ticket include checked baggage?", expect: answer, sections: [baggage], facts: [["23"]]}
+- {id: t036, lang: ar-sa,  q: "ماء زمزم ينحسب من الوزن المسموح؟", expect: answer, sections: [baggage], facts: []}
+
+# ---------------------------------------------------------------- visas
+- {id: t037, lang: ar-sa,  q: "كم رسوم خدمتكم لاصدار التأشيرة السياحية؟", expect: answer, sections: [visas], facts: [["75"]]}
+- {id: t038, lang: ar-sa,  q: "التأشيرة السياحية كم تاخذ وقت عشان تطلع؟", expect: answer, sections: [visas], facts: [["1"], ["3"]]}
+- {id: t039, lang: ar-sa,  q: "جوازي باقي عليه 4 شهور، ينفع اطلع تأشيرة سياحية؟", expect: answer, sections: [visas], facts: [["6"]]}
+- {id: t040, lang: ar-sa,  q: "لو انرفضت التأشيرة ترجعون الفلوس؟", expect: answer, sections: [visas], facts: [["75"]]}
+- {id: t041, lang: ar-sa,  q: "تسوون تأشيرة شنغن؟ وبكم؟", expect: answer, sections: [visas], facts: [["200"]]}
+- {id: t042, lang: ar-msa, q: "هل تضمنون قبول طلب التأشيرة؟", expect: answer, sections: [visas], facts: []}
+- {id: t043, lang: ar-msa, q: "كيف أحصل على تصريح العمرة؟", expect: answer, sections: [visas, umrah_packages], facts: [["نسك", "nusuk"]]}
+- {id: t044, lang: en,     q: "How much do you charge to arrange a UK visa appointment?", expect: answer, sections: [visas], facts: [["200"]]}
+- {id: t045, lang: en,     q: "How long must my passport be valid for the Saudi tourist visa?", expect: answer, sections: [visas], facts: [["6"]]}
+- {id: t046, lang: en,     q: "If my tourist visa is refused, what do I get back?", expect: answer, sections: [visas], facts: [["75"]]}
+- {id: t047, lang: ar-sa,  q: "وش الدول اللي تحجزون لها موعد تأشيرة؟", expect: answer, sections: [visas], facts: [["شنغن", "schengen"], ["بريطانيا", "uk"], ["امريكا", "usa"]]}
+- {id: t048, lang: ar-sa,  q: "تأشيرة امريكا عندكم بكم؟", expect: answer, sections: [visas], facts: [["200"]]}
+
+# ---------------------------------------------------------------- umrah packages
+- {id: t049, lang: ar-sa,  q: "كم العربون اللي ادفعه عشان احجز باقة عمرة؟", expect: answer, sections: [umrah_packages], facts: [["30"]]}
+- {id: t050, lang: ar-sa,  q: "متى ادفع باقي مبلغ باقة العمرة؟", expect: answer, sections: [umrah_packages], facts: [["15"]]}
+- {id: t051, lang: ar-sa,  q: "ابي الغي باقة العمرة وباقي على السفر 20 يوم، كم يرجع لي؟", expect: answer, sections: [umrah_packages], facts: [["50"]]}
+- {id: t052, lang: ar-sa,  q: "الغيت الباقة قبل السفر بشهرين، يخصمون شي؟", expect: answer, sections: [umrah_packages], facts: [["200"]]}
+- {id: t053, lang: ar-sa,  q: "باقي اسبوع على العمرة وابي الغي الباقة، يرجع لي شي؟", expect: answer, sections: [umrah_packages], facts: []}
+- {id: t054, lang: ar-sa,  q: "الباقة المميزة التنقل فيها بالباص ولا القطار؟", expect: answer, sections: [umrah_packages], facts: [["قطار", "train"]]}
+- {id: t055, lang: ar-msa, q: "هل باقات العشر الأواخر من رمضان قابلة للاسترداد؟", expect: answer, sections: [umrah_packages], facts: []}
+- {id: t056, lang: ar-msa, q: "كم يدفع طفل عمره 6 سنوات في باقة العمرة؟", expect: answer, sections: [umrah_packages], facts: [["60"]]}
+- {id: t057, lang: en,     q: "Is a one-year-old charged in the Umrah package?", expect: answer, sections: [umrah_packages], facts: [["free"]]}
+- {id: t058, lang: en,     q: "What does the Umrah package include?", expect: answer, sections: [umrah_packages], facts: [["hotel"]]}
+- {id: t059, lang: en,     q: "How much deposit do I pay for an Umrah package?", expect: answer, sections: [umrah_packages], facts: [["30"]]}
+- {id: t060, lang: ar-sa,  q: "طفلي عمره سنة، يدفع في باقة العمرة؟", expect: answer, sections: [umrah_packages], facts: [["مجان", "free", "ببلاش"]]}
+
+# ---------------------------------------------------------------- hotels
+- {id: t061, lang: ar-sa,  q: "متى وقت الدخول للفندق؟", expect: answer, sections: [hotels], facts: [["3", "15"]]}
+- {id: t062, lang: ar-sa,  q: "الساعة كم لازم اطلع من الفندق؟", expect: answer, sections: [hotels], facts: [["12"]]}
+- {id: t063, lang: ar-sa,  q: "حجزت فندق بسعر قابل للاسترداد، لين متى اقدر الغي ببلاش؟", expect: answer, sections: [hotels], facts: [["48"]]}
+- {id: t064, lang: ar-sa,  q: "لو الغيت حجز الفندق قبل الوصول بيوم واحد وش يصير؟", expect: answer, sections: [hotels], facts: [["ليله", "night"]]}
+- {id: t065, lang: ar-sa,  q: "فندقي في مكة في رمضان، متى اخر وقت للالغاء المجاني؟", expect: answer, sections: [hotels], facts: [["14"]]}
+- {id: t066, lang: ar-sa,  q: "ابي اغير اسم النزيل في حجز الفندق، فيه رسوم؟", expect: answer, sections: [hotels], facts: [["مجان", "free", "ببلاش", "بدون رسوم"]]}
+- {id: t067, lang: ar-msa, q: "هل يمكن تسجيل الدخول المبكر في الفندق؟", expect: answer, sections: [hotels], facts: []}
+- {id: t068, lang: ar-msa, q: "هل يُسترد مبلغ حجز الفندق غير القابل للاسترداد؟", expect: answer, sections: [hotels], facts: []}
+- {id: t069, lang: en,     q: "What time is hotel check-in?", expect: answer, sections: [hotels], facts: [["3", "15"]]}
+- {id: t070, lang: en,     q: "Until when can I cancel a refundable hotel booking for free?", expect: answer, sections: [hotels], facts: [["48"]]}
+- {id: t071, lang: en,     q: "I booked a Madinah hotel for the Hajj season. What's the free cancellation deadline?", expect: answer, sections: [hotels], facts: [["14"]]}
+- {id: t072, lang: en,     q: "What time is check-out?", expect: answer, sections: [hotels], facts: [["12"]]}
+
+# ---------------------------------------------------------------- payment
+- {id: t073, lang: ar-sa,  q: "تقبلون مدى؟", expect: answer, sections: [payment], facts: [["مدى", "mada"]]}
+- {id: t074, lang: ar-sa,  q: "ينفع ادفع بالتقسيط؟", expect: answer, sections: [payment], facts: [["4"]]}
+- {id: t075, lang: ar-sa,  q: "حجزي بـ 12 الف ريال، اقدر اقسطه؟", expect: answer, sections: [payment], facts: [["10000"]]}
+- {id: t076, lang: ar-sa,  q: "حولت تحويل بنكي، كم عندي وقت قبل ما ينلغي الحجز؟", expect: answer, sections: [payment], facts: [["24"]]}
+- {id: t077, lang: ar-sa,  q: "الدفع ما مشى، الحجز راح علي؟", expect: answer, sections: [payment], facts: [["30"]]}
+- {id: t078, lang: ar-sa,  q: "اقدر ادفع بـ STC Pay؟", expect: answer, sections: [payment], facts: [["stc"]]}
+- {id: t079, lang: ar-msa, q: "كم عدد دفعات التقسيط وهل عليها فوائد؟", expect: answer, sections: [payment], facts: [["4"]]}
+- {id: t080, lang: ar-msa, q: "ما أقل قيمة حجز يمكن تقسيطها؟", expect: answer, sections: [payment], facts: [["500"]]}
+- {id: t081, lang: en,     q: "Do you accept Apple Pay?", expect: answer, sections: [payment], facts: [["apple pay"]]}
+- {id: t082, lang: en,     q: "My card is in US dollars. Will I pay anything extra?", expect: answer, sections: [payment], facts: [["bank"]]}
+- {id: t083, lang: en,     q: "Can I pay for a SAR 3,000 booking in instalments?", expect: answer, sections: [payment], facts: [["4"]]}
+- {id: t084, lang: en,     q: "How long is my booking held if the payment fails?", expect: answer, sections: [payment], facts: [["30"]]}
+
+# ---------------------------------------------------------------- invoices
+- {id: t085, lang: ar-sa,  q: "اسعاركم شاملة الضريبة؟", expect: answer, sections: [invoices], facts: [["شامل", "includ"]]}
+- {id: t086, lang: ar-sa,  q: "كم الضريبة على تذكرة طيران دولية؟", expect: answer, sections: [invoices], facts: [["0"]]}
+- {id: t087, lang: ar-sa,  q: "متى توصلني الفاتورة الضريبية؟", expect: answer, sections: [invoices], facts: [["24"]]}
+- {id: t088, lang: ar-sa,  q: "ابي فاتورة باسم شركتي، كيف اطلبها؟", expect: answer, sections: [invoices], facts: [["30"]]}
+- {id: t089, lang: ar-sa,  q: "فيه غلط في بيانات الفاتورة، اقدر اعدلها؟", expect: answer, sections: [invoices], facts: [["30"]]}
+- {id: t090, lang: ar-msa, q: "ما نسبة الضريبة على حجوزات الفنادق داخل المملكة؟", expect: answer, sections: [invoices], facts: [["15"]]}
+- {id: t091, lang: ar-msa, q: "هل رسوم الخدمة خاضعة لضريبة القيمة المضافة؟", expect: answer, sections: [invoices], facts: [["15"]]}
+- {id: t092, lang: en,     q: "What VAT rate applies to a domestic flight?", expect: answer, sections: [invoices], facts: [["15"]]}
+- {id: t093, lang: en,     q: "How do I get an invoice with my company's VAT number?", expect: answer, sections: [invoices], facts: [["30"]]}
+- {id: t094, lang: en,     q: "Is VAT charged on international tickets?", expect: answer, sections: [invoices], facts: [["0"]]}
+- {id: t095, lang: en,     q: "When will I receive my tax invoice?", expect: answer, sections: [invoices], facts: [["24"]]}
+- {id: t096, lang: ar-sa,  q: "ضريبة الرحلات الداخلية كم نسبتها؟", expect: answer, sections: [invoices], facts: [["15"]]}
+
+# ---------------------------------------------------------------- loyalty
+- {id: t097, lang: ar-sa,  q: "كم نقطة اخذ على كل 10 ريال في الطيران؟", expect: answer, sections: [loyalty], facts: [["1"]]}
+- {id: t098, lang: ar-sa,  q: "كل كم نقطة تساوي خصم وكم الخصم؟", expect: answer, sections: [loyalty], facts: [["100"], ["10"]]}
+- {id: t099, lang: ar-sa,  q: "اقل شي كم نقطة اقدر استبدلها؟", expect: answer, sections: [loyalty], facts: [["500"]]}
+- {id: t100, lang: ar-sa,  q: "متى تنضاف النقاط بعد الرحلة؟", expect: answer, sections: [loyalty], facts: [["7"]]}
+- {id: t101, lang: ar-sa,  q: "النقاط لها مدة وتنتهي؟", expect: answer, sections: [loyalty], facts: [["24"]]}
+- {id: t102, lang: ar-sa,  q: "ابي احول نقاطي لحساب اخوي، ينفع؟", expect: answer, sections: [loyalty], facts: []}
+- {id: t103, lang: ar-msa, q: "كم نقطة أكسب عند شراء باقة عمرة بقيمة 5000 ريال؟", expect: answer, sections: [loyalty], facts: [["1000"]]}
+- {id: t104, lang: ar-msa, q: "كم تساوي 1000 نقطة بالريال؟", expect: answer, sections: [loyalty], facts: [["100"]]}
+- {id: t105, lang: en,     q: "How many points do I earn per SAR 10 spent on hotels?", expect: answer, sections: [loyalty], facts: [["1"]]}
+- {id: t106, lang: en,     q: "When do my loyalty points expire?", expect: answer, sections: [loyalty], facts: [["24"]]}
+- {id: t107, lang: en,     q: "What's the minimum number of points I can redeem?", expect: answer, sections: [loyalty], facts: [["500"]]}
+- {id: t108, lang: ar-sa,  q: "عندي 300 نقطة، اقدر استخدمها؟", expect: answer, sections: [loyalty], facts: [["500"]]}
+
+# ---------------------------------------------------------------- children
+- {id: t109, lang: ar-sa,  q: "بنتي عمرها سنة، كم سعر تذكرتها؟", expect: answer, sections: [children], facts: [["10"]]}
+- {id: t110, lang: ar-sa,  q: "ولدي عمره 8 سنين، يدفع سعر تذكرة كامل؟", expect: answer, sections: [children], facts: [["75"]]}
+- {id: t111, lang: ar-sa,  q: "الرضيع له وزن شنطة؟", expect: answer, sections: [children], facts: [["10"]]}
+- {id: t112, lang: ar-sa,  q: "ابي ولدي (9 سنين) يسافر لحاله، ينفع؟", expect: answer, sections: [children], facts: [["300"]]}
+- {id: t113, lang: ar-sa,  q: "طفلي يحتاج جواز خاص فيه للسفر برا؟", expect: answer, sections: [children], facts: []}
+- {id: t114, lang: ar-sa,  q: "عربية الطفل ياخذونها معنا؟", expect: answer, sections: [children], facts: [["مجان", "free", "ببلاش"]]}
+- {id: t115, lang: ar-msa, q: "ما نسبة سعر تذكرة الطفل من سنتين إلى 11 سنة؟", expect: answer, sections: [children], facts: [["75"]]}
+- {id: t116, lang: ar-msa, q: "كيف أحجز خدمة مرافقة لطفل يسافر وحده؟", expect: answer, sections: [children], facts: [["مركز الاتصال", "call"]]}
+- {id: t117, lang: en,     q: "How much does an infant ticket cost?", expect: answer, sections: [children], facts: [["10"]]}
+- {id: t118, lang: en,     q: "Can my 6-year-old fly alone? How much is it?", expect: answer, sections: [children], facts: [["300"]]}
+- {id: t119, lang: en,     q: "Does a 4-year-old get the same baggage allowance as an adult?", expect: answer, sections: [children], facts: []}
+- {id: t120, lang: en,     q: "Does an infant get their own seat?", expect: answer, sections: [children], facts: []}
+
+# ---------------------------------------------------------------- special assistance
+- {id: t121, lang: ar-sa,  q: "ابي كرسي متحرك لابوي، فيه رسوم؟", expect: answer, sections: [special_assistance], facts: [["مجان", "free", "ببلاش"]]}
+- {id: t122, lang: ar-sa,  q: "متى لازم اطلب الكرسي المتحرك؟", expect: answer, sections: [special_assistance], facts: [["48"]]}
+- {id: t123, lang: ar-sa,  q: "زوجتي حامل بالاسبوع 30، وش تحتاج عشان تسافر؟", expect: answer, sections: [special_assistance], facts: [["7"]]}
+- {id: t124, lang: ar-sa,  q: "حامل بتوأم في الاسبوع 33، ينفع اسافر؟", expect: answer, sections: [special_assistance], facts: [["32"]]}
+- {id: t125, lang: ar-sa,  q: "ابوي يستخدم اكسجين، يقدر ياخذه معه بالطيارة؟", expect: answer, sections: [special_assistance], facts: [["72"]]}
+- {id: t126, lang: ar-msa, q: "متى يجب تقديم النموذج الطبي لجهاز الأكسجين؟", expect: answer, sections: [special_assistance], facts: [["72"]]}
+- {id: t127, lang: ar-msa, q: "ما آخر أسبوع حمل يُسمح فيه بالسفر للحمل الفردي؟", expect: answer, sections: [special_assistance], facts: [["36"]]}
+- {id: t128, lang: en,     q: "Is wheelchair assistance free?", expect: answer, sections: [special_assistance], facts: [["free"]]}
+- {id: t129, lang: en,     q: "I'm 29 weeks pregnant. Do I need a doctor's letter?", expect: answer, sections: [special_assistance], facts: [["7"]]}
+- {id: t130, lang: en,     q: "How early must I request a wheelchair?", expect: answer, sections: [special_assistance], facts: [["48"]]}
+- {id: t131, lang: en,     q: "Can I fly at 37 weeks pregnant with one baby?", expect: answer, sections: [special_assistance], facts: [["36"]]}
+- {id: t132, lang: ar-sa,  q: "اختي حامل بالاسبوع 20، تحتاج خطاب من الدكتور؟", expect: answer, sections: [special_assistance], facts: [["28"]]}
+
+# ---------------------------------------------------------------- disruptions
+- {id: t133, lang: ar-sa,  q: "الطيران غير موعد رحلتي 5 ساعات، وش حقي؟", expect: answer, sections: [disruptions], facts: [["استرداد", "refund", "ترجيع"]]}
+- {id: t134, lang: ar-sa,  q: "الخطوط الغت رحلتي، يرجع لي المبلغ كامل؟", expect: answer, sections: [disruptions], facts: [["كامل", "full"]]}
+- {id: t135, lang: ar-sa,  q: "كيف بعرف اذا تغير موعد رحلتي من الطيران؟", expect: answer, sections: [disruptions], facts: [["رساله", "sms", "text"]]}
+- {id: t136, lang: ar-sa,  q: "رحلتي الاولى تأخرت وفاتتني الثانية وهي على تذكرة منفصلة، تتحملونها؟", expect: answer, sections: [disruptions], facts: []}
+- {id: t137, lang: ar-msa, q: "ما الذي يحق لي إذا غيّرت شركة الطيران موعد رحلتي ساعة واحدة؟", expect: answer, sections: [disruptions], facts: [["3"]]}
+- {id: t138, lang: en,     q: "The airline moved my flight by 4 hours. Can I get a refund?", expect: answer, sections: [disruptions], facts: [["refund"]]}
+- {id: t139, lang: en,     q: "Will you tell me if the airline changes my flight?", expect: answer, sections: [disruptions], facts: [["text", "sms"]]}
+- {id: t140, lang: en,     q: "I missed my connection on a separate ticket because the first flight was late. Are you responsible?", expect: answer, sections: [disruptions], facts: []}
+- {id: t141, lang: ar-sa,  q: "رحلتي تغير موعدها ساعتين من الطيران، اقدر اغيرها ببلاش؟", expect: answer, sections: [disruptions], facts: [["3"]]}
+- {id: t142, lang: en,     q: "My flight was cancelled by the airline. What are my options?", expect: answer, sections: [disruptions], facts: [["refund"]]}
+- {id: t143, lang: ar-msa, q: "هل أحصل على تغيير مجاني إذا ألغت شركة الطيران الرحلة؟", expect: answer, sections: [disruptions], facts: [["مجان", "free"]]}
+
+# ---------------------------------------------------------------- name correction
+- {id: t144, lang: ar-sa,  q: "اسمي مكتوب غلط بحرف واحد في التذكرة، تصحيحه ببلاش؟", expect: answer, sections: [name_correction], facts: [["72"]]}
+- {id: t145, lang: ar-sa,  q: "باقي يوم على الرحلة وفيه غلط في اسمي، كم التصحيح؟", expect: answer, sections: [name_correction], facts: [["100"]]}
+- {id: t146, lang: ar-sa,  q: "ابي اعطي تذكرتي لاخوي يسافر بدالي", expect: answer, sections: [name_correction], facts: []}
+- {id: t147, lang: ar-msa, q: "هل يجب أن يطابق الاسم في التذكرة الاسم في جواز السفر؟", expect: answer, sections: [name_correction], facts: []}
+- {id: t148, lang: ar-msa, q: "كم عدد الأحرف التي يمكن تصحيحها في الاسم؟", expect: answer, sections: [name_correction], facts: [["3"]]}
+- {id: t149, lang: en,     q: "There's a typo in my surname on the ticket. Is it free to fix?", expect: answer, sections: [name_correction], facts: [["72"]]}
+- {id: t150, lang: en,     q: "Can I transfer my ticket to my friend?", expect: answer, sections: [name_correction], facts: []}
+- {id: t151, lang: en,     q: "How much is a name correction 2 days before the flight?", expect: answer, sections: [name_correction], facts: [["100"]]}
+- {id: t152, lang: ar-sa,  q: "تصحيح الاسم قبل الرحلة باسبوع بفلوس؟", expect: answer, sections: [name_correction], facts: [["مجان", "free", "ببلاش", "بدون رسوم"]]}
+- {id: t153, lang: en,     q: "My name on the ticket has 2 letters wrong and I fly in 5 days. What will it cost?", expect: answer, sections: [name_correction], facts: [["free", "no fee", "no charge"]]}
+- {id: t154, lang: ar-sa,  q: "تصحيح حرفين في الاسم قبل الرحلة بـ 4 ايام عليه رسوم؟", expect: answer, sections: [name_correction], facts: [["مجان", "free", "ببلاش", "بدون رسوم"]]}
+
+# ---------------------------------------------------------------- contact
+- {id: t155, lang: ar-sa,  q: "الكول سنتر متى يفتح؟", expect: answer, sections: [contact], facts: [["8"]]}
+- {id: t156, lang: ar-sa,  q: "الواتساب عندكم يرد في الليل؟", expect: answer, sections: [contact], facts: [["24"]]}
+- {id: t157, lang: ar-sa,  q: "ارسلت لكم ايميل، متى تردون؟", expect: answer, sections: [contact], facts: [["24"]]}
+- {id: t158, lang: ar-sa,  q: "فرعكم في الرياض يفتح يوم الجمعة؟", expect: answer, sections: [contact], facts: []}
+- {id: t159, lang: ar-msa, q: "ما مواعيد عمل فرع الرياض؟", expect: answer, sections: [contact], facts: [["9"]]}
+- {id: t160, lang: ar-msa, q: "حتى أي ساعة يعمل مركز الاتصال؟", expect: answer, sections: [contact], facts: [["12"]]}
+- {id: t161, lang: en,     q: "What are your call centre hours?", expect: answer, sections: [contact], facts: [["8"]]}
+- {id: t162, lang: en,     q: "Is WhatsApp support available on weekends?", expect: answer, sections: [contact], facts: [["24"]]}
+- {id: t163, lang: en,     q: "How fast do you reply to emails?", expect: answer, sections: [contact], facts: [["24"]]}
+- {id: t164, lang: en,     q: "Is the Riyadh branch open on Saturday?", expect: answer, sections: [contact], facts: []}
+- {id: t165, lang: ar-sa,  q: "اقدر اكلمكم الساعة 1 الفجر؟", expect: answer, sections: [contact], facts: [["24"]]}
+
+# ---------------------------------------------------------------- handoff: complaints
+- {id: t166, lang: ar-sa,  q: "الموظف عندكم كان مره قليل ادب معي، ابي اشتكي", expect: handoff}
+- {id: t167, lang: ar-sa,  q: "صار لي اسبوعين انتظر الاسترداد وماحد رد علي!! وش ذا التعامل", expect: handoff}
+- {id: t168, lang: ar-sa,  q: "الفندق اللي حجزتوه لي وسخ ومو مثل الصور", expect: handoff}
+- {id: t169, lang: ar-msa, q: "أرغب في تقديم شكوى رسمية بخصوص تأخر الحافلة في باقة العمرة", expect: handoff}
+- {id: t170, lang: en,     q: "Your agent promised me a free upgrade and it never happened. I want to complain.", expect: handoff}
+- {id: t171, lang: en,     q: "This is the third time my booking was messed up. I'm furious.", expect: handoff}
+- {id: t172, lang: ar-sa,  q: "الباص في العمرة تأخر علينا 4 ساعات وضاع علينا وقت", expect: handoff}
+- {id: t173, lang: ar-sa,  q: "ليش خصمتوا مني مبلغ زيادة على البطاقة؟", expect: handoff}
+- {id: t174, lang: en,     q: "I was charged twice for the same booking.", expect: handoff}
+- {id: t175, lang: ar-msa, q: "لم تصلني رسالة التأكيد وتم خصم المبلغ من حسابي", expect: handoff}
+
+# ---------------------------------------------------------------- handoff: compensation
+- {id: t176, lang: ar-sa,  q: "ابي تعويض عن الفندق الوسخ", expect: handoff}
+- {id: t177, lang: ar-sa,  q: "رحلتي تأخرت 7 ساعات، كم التعويض اللي تعطوني؟", expect: handoff}
+- {id: t178, lang: en,     q: "How much compensation will you pay me for the delay?", expect: handoff}
+- {id: t179, lang: ar-sa,  q: "ابي تعويض لان الرحلة اتغيرت وضاع علي موعد مهم", expect: handoff}
+- {id: t180, lang: en,     q: "I want my money back for the nights I didn't use because the hotel was bad.", expect: handoff}
+- {id: t181, lang: ar-msa, q: "أطالب بتعويض مالي عن الإزعاج الذي سببه تغيير الرحلة", expect: handoff}
+- {id: t182, lang: ar-sa,  q: "عطوني كوبون خصم تعويض عن التأخير", expect: handoff}
+- {id: t183, lang: en,     q: "Can you pay me back for the taxi I took after the flight was cancelled?", expect: handoff}
+
+# ---------------------------------------------------------------- handoff: actions on a booking or account
+- {id: t184, lang: ar-sa,  q: "الغوا حجزي رقم SF-48213 الحين", expect: handoff}
+- {id: t185, lang: ar-sa,  q: "وين وصل استرداد فلوسي؟ رقم الحجز SF-11902", expect: handoff}
+- {id: t186, lang: ar-sa,  q: "ابي اغير رحلتي لبكرا، رقم الحجز SF-22871، سووها لي", expect: handoff}
+- {id: t187, lang: en,     q: "Please change my booking SF-30155 to next Friday.", expect: handoff}
+- {id: t188, lang: en,     q: "What's the status of my refund for booking SF-77310?", expect: handoff}
+- {id: t189, lang: ar-msa, q: "أرجو إضافة حقيبة إلى حجزي رقم SF-56021", expect: handoff}
+- {id: t190, lang: ar-sa,  q: "ابي اعرف رقم مقعدي في حجز SF-10234", expect: handoff}
+- {id: t191, lang: en,     q: "Can you send me my e-ticket again? Booking SF-90817.", expect: handoff}
+- {id: t192, lang: ar-sa,  q: "نسيت كلمة السر حق حسابي وما اقدر ادخل", expect: handoff}
+- {id: t193, lang: en,     q: "Please update the email address on my account.", expect: handoff}
+- {id: t194, lang: ar-sa,  q: "سجلوا لي كرسي متحرك على حجز SF-66120", expect: handoff}
+- {id: t195, lang: ar-msa, q: "أريد تأكيد حجز الفندق رقم SF-21340", expect: handoff}
+- {id: t196, lang: en,     q: "Has my visa application been approved yet? Reference SF-44102.", expect: handoff}
+- {id: t197, lang: ar-sa,  q: "كم نقطة عندي الحين في حسابي؟", expect: handoff}
+
+# ---------------------------------------------------------------- handoff: not covered by the policy
+- {id: t198, lang: ar-sa,  q: "تبيعون تأمين سفر؟", expect: handoff}
+- {id: t199, lang: ar-sa,  q: "عندكم تأجير سيارات في جدة؟", expect: handoff}
+- {id: t200, lang: en,     q: "Do you offer Hajj packages?", expect: handoff}
+- {id: t201, lang: ar-sa,  q: "اقدر اخذ قطتي معي في الطيارة؟", expect: handoff}
+- {id: t202, lang: en,     q: "Can I bring my dog on the flight?", expect: handoff}
+- {id: t203, lang: ar-sa,  q: "فيه دخول للصالة (اللاونج) مع تذكرة الاعمال؟", expect: handoff}
+- {id: t204, lang: en,     q: "Do you sell cruise holidays?", expect: handoff}
+- {id: t205, lang: ar-msa, q: "هل يمكن حجز مقعد بجانب النافذة مسبقًا؟", expect: handoff}
+- {id: t206, lang: ar-sa,  q: "كم سعر ترقية التذكرة من توفير لأعمال؟", expect: handoff}
+- {id: t207, lang: en,     q: "Do you offer group discounts for 20 people?", expect: handoff}
+- {id: t208, lang: ar-sa,  q: "تقدمون وجبات خاصة لمرضى السكري في الطيارة؟", expect: handoff}
+- {id: t209, lang: en,     q: "Do you arrange airport pickup in Riyadh?", expect: handoff}
+- {id: t210, lang: ar-sa,  q: "اقدر اسافر لدبي بالهوية الوطنية بدون جواز؟", expect: handoff}
+- {id: t211, lang: en,     q: "Is there free Wi-Fi on the flight?", expect: handoff}
+- {id: t212, lang: ar-msa, q: "هل لديكم برنامج لحجز الرحلات المدرسية؟", expect: handoff}
+- {id: t213, lang: ar-sa,  q: "تعطون خصم للطلاب؟", expect: handoff}
+
+# ---------------------------------------------------------------- handoff: emergencies and legal
+- {id: t214, lang: ar-sa,  q: "ابوي تعبان في المطار الحين ويحتاج اسعاف", expect: handoff}
+- {id: t215, lang: en,     q: "I lost my passport abroad and my flight is tomorrow. What do I do?", expect: handoff}
+- {id: t216, lang: ar-sa,  q: "بشتكيكم في المحكمة اذا ما رجعتوا فلوسي", expect: handoff}
+- {id: t217, lang: en,     q: "My lawyer will contact you about this booking.", expect: handoff}
+- {id: t218, lang: ar-msa, q: "تعرضت لحادث في الفندق الذي حجزتموه وأحتاج مساعدة عاجلة", expect: handoff}
+- {id: t219, lang: ar-sa,  q: "انسرقت شنطتي في الفندق", expect: handoff}
+- {id: t220, lang: en,     q: "Someone used my card to book with you without my permission.", expect: handoff}
+- {id: t221, lang: ar-sa,  q: "ولدي ضاع مني في المطار ساعدوني", expect: handoff}
+
+# ---------------------------------------------------------------- handoff: exceptions and favours
+- {id: t222, lang: ar-sa,  q: "تكفى سوو لي استثناء والغوا تذكرة التوفير بدون رسوم", expect: handoff}
+- {id: t223, lang: en,     q: "Can you waive the change fee just this once?", expect: handoff}
+- {id: t224, lang: ar-sa,  q: "عطوني خصم لاني عميل قديم عندكم", expect: handoff}
+- {id: t225, lang: ar-msa, q: "هل يمكنكم تمديد صلاحية نقاطي المنتهية؟", expect: handoff}
+- {id: t226, lang: en,     q: "Can you hold this price for me until next week?", expect: handoff}
+- {id: t227, lang: ar-sa,  q: "ممكن تخلون العربون 10% بدل 30%؟", expect: handoff}
+
+# ---------------------------------------------------------------- handoff: asks for a person
+- {id: t228, lang: ar-sa,  q: "ابي اكلم موظف", expect: handoff}
+- {id: t229, lang: ar-sa,  q: "حولني على شخص حقيقي لو سمحت", expect: handoff}
+- {id: t230, lang: en,     q: "I want to talk to a human.", expect: handoff}
+- {id: t231, lang: ar-msa, q: "أرغب في التحدث مع أحد الموظفين", expect: handoff}
+- {id: t232, lang: en,     q: "Agent please", expect: handoff}
+- {id: t233, lang: ar-sa,  q: "ما ابي اتكلم مع بوت", expect: handoff}
+
+# ---------------------------------------------------------------- redirect: not a support question
+- {id: t234, lang: ar-sa,  q: "السلام عليكم", expect: redirect}
+- {id: t235, lang: en,     q: "hi", expect: redirect}
+- {id: t236, lang: ar-sa,  q: "وش رايك في الهلال هالموسم؟", expect: redirect}
+- {id: t237, lang: en,     q: "Write me a poem about the sea.", expect: redirect}
+- {id: t238, lang: ar-sa,  q: "اكتب لي كود بايثون يرتب ارقام", expect: redirect}
+- {id: t239, lang: ar-msa, q: "ما عاصمة أستراليا؟", expect: redirect}
+- {id: t240, lang: en,     q: "What's the weather in Riyadh tomorrow?", expect: redirect}
+- {id: t241, lang: ar-sa,  q: "شكرا لك", expect: redirect}
+- {id: t242, lang: en,     q: "Tell me a joke", expect: redirect}
+- {id: t243, lang: ar-sa,  q: "مين انت؟", expect: redirect}
+- {id: t244, lang: ar-msa, q: "كيف أطبخ الكبسة؟", expect: redirect}
+- {id: t245, lang: en,     q: "Thanks, that's all.", expect: redirect}
